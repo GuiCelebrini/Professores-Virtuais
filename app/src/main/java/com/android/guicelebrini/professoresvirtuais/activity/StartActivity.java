@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.android.guicelebrini.professoresvirtuais.R;
 import com.android.guicelebrini.professoresvirtuais.helper.Preferences;
 
-//creating repository
 public class StartActivity extends AppCompatActivity {
 
     private EditText editName;
