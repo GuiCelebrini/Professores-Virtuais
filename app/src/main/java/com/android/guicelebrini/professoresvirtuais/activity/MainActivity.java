@@ -1,16 +1,70 @@
 package com.android.guicelebrini.professoresvirtuais.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.android.guicelebrini.professoresvirtuais.R;
+import com.android.guicelebrini.professoresvirtuais.helper.Preferences;
 
 public class MainActivity extends AppCompatActivity {
+
+    Toolbar toolbar;
+
+    Preferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewsById();
+        configureToolbar();
+
+        preferences = new Preferences(this);
+        changeToolbarTitle();
+    }
+
+    private void changeToolbarTitle(){
+        if (preferences.getUserName() != null){
+            String userName = preferences.getUserName();
+            toolbar.setTitle("Olá, " + userName);
+        }
+    }
+
+    private void findViewsById(){
+        toolbar = findViewById(R.id.toolbarMain);
+    }
+
+    private void configureToolbar(){
+        setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar_menu, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.actionChangeName:
+                createChangeNameDialog();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void createChangeNameDialog(){
+
     }
 }
