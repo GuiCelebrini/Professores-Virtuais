@@ -1,13 +1,16 @@
 package com.android.guicelebrini.professoresvirtuais.activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 import com.android.guicelebrini.professoresvirtuais.R;
 import com.android.guicelebrini.professoresvirtuais.helper.Preferences;
@@ -65,6 +68,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createChangeNameDialog(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
 
+        alertDialog.setTitle("Insira seu novo nome de usuário: ");
+
+        EditText editNewName = new EditText(this);
+        alertDialog.setView(editNewName);
+
+        alertDialog.setPositiveButton("Alterar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String newName = editNewName.getText().toString();
+                if (newName != null){
+                    preferences.saveData(newName);
+                    changeToolbarTitle();
+                }
+            }
+        });
+
+        alertDialog.create();
+        alertDialog.show();
     }
 }

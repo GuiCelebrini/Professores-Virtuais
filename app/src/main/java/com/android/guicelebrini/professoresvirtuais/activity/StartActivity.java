@@ -47,6 +47,7 @@ public class StartActivity extends AppCompatActivity {
         if (preferences.getUserName() != null){
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 
