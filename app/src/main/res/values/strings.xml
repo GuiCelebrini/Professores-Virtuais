@@ -2,4 +2,6 @@
     <string name="app_name">Professores Virtuais</string>
     <string name="editName_start_hint">Por favor, insira seu nome</string>
     <string name="button_start">Começar já!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
