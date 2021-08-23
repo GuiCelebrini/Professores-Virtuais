@@ -14,10 +14,10 @@ import android.view.MenuItem;
 import android.widget.EditText;
 
 import com.android.guicelebrini.professoresvirtuais.R;
-import com.android.guicelebrini.professoresvirtuais.fragment.ConferenceAppsFragment;
-import com.android.guicelebrini.professoresvirtuais.fragment.ManagementAppsFragment;
+import com.android.guicelebrini.professoresvirtuais.fragment.AppsFragment;
 import com.android.guicelebrini.professoresvirtuais.helper.Preferences;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
+import com.ogaclejapan.smarttablayout.utils.v4.Bundler;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
@@ -58,8 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(), FragmentPagerItems.with(this)
-                .add("Conferência", ConferenceAppsFragment.class)
-                .add("Gerenciamento", ManagementAppsFragment.class)
+                .add("Conferência", AppsFragment.class, new Bundler().putString("fragmentName", "conference").get())
+                .add("Gerenciar", AppsFragment.class, new Bundler().putString("fragmentName", "management").get())
+                .add("Criar", AppsFragment.class, new Bundler().putString("fragmentName", "creation").get())
                 .create());
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);

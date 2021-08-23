@@ -7,12 +7,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.guicelebrini.professoresvirtuais.R;
 
-public class ManagementAppsFragment extends Fragment {
+public class AppsFragment extends Fragment {
 
-    public ManagementAppsFragment() {
+    public AppsFragment() {
         // Required empty public constructor
     }
 
@@ -20,6 +21,15 @@ public class ManagementAppsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_management_apps, container, false);
+        View view = inflater.inflate(R.layout.fragment_apps, container, false);
+
+        TextView textView = view.findViewById(R.id.textView);
+        Bundle args = getArguments();
+
+        if (args != null){
+            textView.setText(args.getString("fragmentName"));
+        }
+
+        return view;
     }
 }
