@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "288766179955",
+    "project_id": "professores-virtuais",
+    "storage_bucket": "professores-virtuais.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:288766179955:android:63117ecc7006b203588806",
+        "android_client_info": {
+          "package_name": "com.android.guicelebrini.professoresvirtuais"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "288766179955-099698fa2uack7hv6skft66kbkra1p3g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.guicelebrini.professoresvirtuais",
+            "certificate_hash": "ce53e110e1d0d3751ceabbca6c052728884d5b18"
+          }
+        },
+        {
+          "client_id": "288766179955-2fj4ib3kqe86isrfl9lbml51p2anbqs3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuVgzhPbA8nvfJ3ZIyFY44SlsGaPLm7g8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "288766179955-2fj4ib3kqe86isrfl9lbml51p2anbqs3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

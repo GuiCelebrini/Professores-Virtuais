@@ -16,6 +16,7 @@ import android.widget.EditText;
 import com.android.guicelebrini.professoresvirtuais.R;
 import com.android.guicelebrini.professoresvirtuais.fragment.AppsFragment;
 import com.android.guicelebrini.professoresvirtuais.helper.Preferences;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.Bundler;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
