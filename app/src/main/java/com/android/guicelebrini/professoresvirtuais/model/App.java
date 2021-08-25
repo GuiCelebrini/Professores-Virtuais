@@ -1,14 +1,23 @@
 package com.android.guicelebrini.professoresvirtuais.model;
 
 public class App {
-    String name;
-    String developer;
-    String downloadLink;
-    String imagem;
-    String description;
-    String firebaseId;
+    private String name;
+    private String developer;
+    private String description;
+    private String imagem;
+    private String downloadLink;
+    private String firebaseId;
 
     public App(){}
+
+    public App(String name, String developer, String description, String imagem, String downloadLink, String firebaseId) {
+        this.name = name;
+        this.developer = developer;
+        this.description = description;
+        this.imagem = imagem;
+        this.downloadLink = downloadLink;
+        this.firebaseId = firebaseId;
+    }
 
     public String getName() {
         return name;
@@ -26,12 +35,12 @@ public class App {
         this.developer = developer;
     }
 
-    public String getDownloadLink() {
-        return downloadLink;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDownloadLink(String downloadLink) {
-        this.downloadLink = downloadLink;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getImagem() {
@@ -42,12 +51,12 @@ public class App {
         this.imagem = imagem;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDownloadLink() {
+        return downloadLink;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDownloadLink(String downloadLink) {
+        this.downloadLink = downloadLink;
     }
 
     public String getFirebaseId() {
