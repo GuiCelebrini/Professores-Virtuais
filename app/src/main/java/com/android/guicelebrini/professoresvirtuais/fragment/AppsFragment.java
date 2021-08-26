@@ -2,21 +2,30 @@ package com.android.guicelebrini.professoresvirtuais.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.guicelebrini.professoresvirtuais.R;
 import com.android.guicelebrini.professoresvirtuais.adapter.AdapterRecyclerApps;
 import com.android.guicelebrini.professoresvirtuais.model.App;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -25,12 +34,13 @@ import java.util.List;
 public class AppsFragment extends Fragment {
 
     private String fragmentName;
+    private View view;
 
     private RecyclerView recyclerApps;
     private AdapterRecyclerApps adapter;
     private List<App> appsList = new ArrayList<>();
 
-    private View view;
+    private FirebaseFirestore db;
 
     public AppsFragment() {
         // Required empty public constructor
@@ -41,14 +51,14 @@ public class AppsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_apps, container, false);
-        findViewsById();
-        createAppsList();
-        configureRecyclerApps();
 
-        Bundle args = getArguments();
-        if (args != null){
-            fragmentName = args.getString("fragmentName");
-        }
+        findViewsById();
+
+        getFragmentName();
+
+        createAppsList();
+
+        configureRecyclerApps();
 
         return view;
     }
@@ -57,7 +67,40 @@ public class AppsFragment extends Fragment {
         recyclerApps = view.findViewById(R.id.recyclerApps);
     }
 
+    private void getFragmentName(){
+        Bundle args = getArguments();
+        if (args != null){
+            fragmentName = args.getString("fragmentName");
+        }
+    }
+
     private void createAppsList(){
+        db = FirebaseFirestore.getInstance();
+
+        db.collection("apps").document(fragmentName).collection("apps").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(Task<QuerySnapshot> task) {
+
+                        appsList.clear();
+
+                        for (DocumentSnapshot snapshot : task.getResult()) {
+                            App app = snapshot.toObject(App.class);
+                            appsList.add(app);
+                            app.setFirebaseId(snapshot.getId());
+                        }
+
+                        adapter.notifyDataSetChanged();
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(Exception e) {
+                        Log.i("MessageError", e.getMessage());
+                        Toast.makeText(view.getContext(), "Oops... algo deu errado", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void configureRecyclerApps(){

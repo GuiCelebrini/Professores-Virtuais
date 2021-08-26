@@ -19,6 +19,18 @@ public class App {
         this.firebaseId = firebaseId;
     }
 
+    @Override
+    public String toString() {
+        return "App{" +
+                "name='" + name + '\'' +
+                ", developer='" + developer + '\'' +
+                ", description='" + description + '\'' +
+                ", imagem='" + imagem + '\'' +
+                ", downloadLink='" + downloadLink + '\'' +
+                ", firebaseId='" + firebaseId + '\'' +
+                '}';
+    }
+
     public String getName() {
         return name;
     }
