@@ -1,5 +1,7 @@
 package com.android.guicelebrini.professoresvirtuais.fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,6 +22,7 @@ import android.widget.Toast;
 
 import com.android.guicelebrini.professoresvirtuais.R;
 import com.android.guicelebrini.professoresvirtuais.adapter.AdapterRecyclerApps;
+import com.android.guicelebrini.professoresvirtuais.helper.RecyclerItemClickListener;
 import com.android.guicelebrini.professoresvirtuais.model.App;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -110,7 +114,27 @@ public class AppsFragment extends Fragment {
 
         recyclerApps.setLayoutManager(layoutManager);
         recyclerApps.setHasFixedSize(true);
-        //recyclerApps.addItemDecoration(new DividerItemDecoration(view.getContext(), LinearLayout.VERTICAL));
+
+        recyclerApps.addOnItemTouchListener(new RecyclerItemClickListener(view.getContext(), recyclerApps, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                App app = appsList.get(position);
+
+                Uri uri = Uri.parse(app.getDownloadLink());
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        }));
 
         recyclerApps.setAdapter(adapter);
     }
