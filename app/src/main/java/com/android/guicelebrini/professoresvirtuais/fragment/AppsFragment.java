@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.guicelebrini.professoresvirtuais.R;
+import com.android.guicelebrini.professoresvirtuais.activity.AppActivity;
 import com.android.guicelebrini.professoresvirtuais.adapter.AdapterRecyclerApps;
 import com.android.guicelebrini.professoresvirtuais.helper.RecyclerItemClickListener;
 import com.android.guicelebrini.professoresvirtuais.model.App;
@@ -120,9 +121,14 @@ public class AppsFragment extends Fragment {
             public void onItemClick(View view, int position) {
                 App app = appsList.get(position);
 
-                Uri uri = Uri.parse(app.getDownloadLink());
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                Intent intent = new Intent(view.getContext(), AppActivity.class);
+                intent.putExtra("appId", app.getFirebaseId());
+                intent.putExtra("appType", fragmentName);
                 startActivity(intent);
+
+                /*Uri uri = Uri.parse(app.getDownloadLink());
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);*/
             }
 
             @Override
