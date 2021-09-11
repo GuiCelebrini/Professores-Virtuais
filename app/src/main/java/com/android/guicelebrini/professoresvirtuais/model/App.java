@@ -4,17 +4,19 @@ public class App {
     private String name;
     private String developer;
     private String description;
-    private String imagem;
+    private String image;
+    private String printURL;
     private String downloadLink;
     private String firebaseId;
 
     public App(){}
 
-    public App(String name, String developer, String description, String imagem, String downloadLink, String firebaseId) {
+    public App(String name, String developer, String description, String image, String printURL, String downloadLink, String firebaseId) {
         this.name = name;
         this.developer = developer;
         this.description = description;
-        this.imagem = imagem;
+        this.image = image;
+        this.printURL = printURL;
         this.downloadLink = downloadLink;
         this.firebaseId = firebaseId;
     }
@@ -25,7 +27,7 @@ public class App {
                 "name='" + name + '\'' +
                 ", developer='" + developer + '\'' +
                 ", description='" + description + '\'' +
-                ", imagem='" + imagem + '\'' +
+                ", imagem='" + image + '\'' +
                 ", downloadLink='" + downloadLink + '\'' +
                 ", firebaseId='" + firebaseId + '\'' +
                 '}';
@@ -55,12 +57,20 @@ public class App {
         this.description = description;
     }
 
-    public String getImagem() {
-        return imagem;
+    public String getImage() {
+        return image;
     }
 
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
+    public void setImage(String imagem) {
+        this.image = imagem;
+    }
+
+    public String getPrintURL() {
+        return printURL;
+    }
+
+    public void setPrintURL(String printURL) {
+        this.printURL = printURL;
     }
 
     public String getDownloadLink() {

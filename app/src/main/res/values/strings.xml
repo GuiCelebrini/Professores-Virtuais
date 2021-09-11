@@ -2,6 +2,17 @@
     <string name="app_name">Professores Virtuais</string>
     <string name="editName_start_hint">Por favor, insira seu nome</string>
     <string name="button_start">Começar já!</string>
+    <string name="button_download">Baixe já!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_app_desc">
+        \u0020Google Meet é uma plataforma de videoconferências do Google, pertencente ao Workspace, que oferece
+        planos gratuitos e pagos para criação de reuniões com até 250 pessoas, com duração de até 24 horas,
+        criptografia e uma série de recursos disponíveis. O serviço do Google tem similaridades com programas
+        como o Zoom e o Microsoft Teams, mas busca se diferenciar das rivais por conta da integração com outros
+        serviços do Google. \n\n
+        \u0020A ferramenta integrada é utilizada para atrair clientes corporativos interessados em pacotes de
+        computação em nuvem para empresas. A seguir, entenda como o Google Meet funciona, quais são seus
+        recursos, planos e preços, além de aprender como iniciar sua própria videoconferência de forma gratuita.
+    </string>
 </resources>

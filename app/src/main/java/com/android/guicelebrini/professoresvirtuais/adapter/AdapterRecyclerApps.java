@@ -57,7 +57,7 @@ public class AdapterRecyclerApps extends RecyclerView.Adapter<AdapterRecyclerApp
         public void set(App app){
             this.textName.setText(app.getName());
             this.textDev.setText(app.getDeveloper());
-            Picasso.get().load(app.getImagem()).into(this.imageApp);
+            Picasso.get().load(app.getImage()).into(this.imageApp);
         }
     }
 }

@@ -48,7 +48,7 @@ public class AppsFragment extends Fragment {
     private FirebaseFirestore db;
 
     public AppsFragment() {
-        // Required empty public constructor
+        //Required empty public constructor
     }
 
     @Override
@@ -123,6 +123,7 @@ public class AppsFragment extends Fragment {
 
                 Intent intent = new Intent(view.getContext(), AppActivity.class);
                 intent.putExtra("appId", app.getFirebaseId());
+                intent.putExtra("appName", app.getName());
                 intent.putExtra("appType", fragmentName);
                 startActivity(intent);
 
