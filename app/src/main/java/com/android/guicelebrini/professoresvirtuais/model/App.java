@@ -8,6 +8,7 @@ public class App {
     private String printURL;
     private String downloadLink;
     private String firebaseId;
+    private String videoID;
 
     public App(){}
 
@@ -87,5 +88,13 @@ public class App {
 
     public void setFirebaseId(String firebaseId) {
         this.firebaseId = firebaseId;
+    }
+
+    public String getVideoID() {
+        return videoID;
+    }
+
+    public void setVideoID(String videoID) {
+        this.videoID = videoID;
     }
 }

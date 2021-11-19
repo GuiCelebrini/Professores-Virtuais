@@ -17,20 +17,27 @@ import com.android.guicelebrini.professoresvirtuais.R;
 import com.android.guicelebrini.professoresvirtuais.model.App;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
-public class AppActivity extends AppCompatActivity {
+public class AppActivity extends YouTubeBaseActivity {
 
     private Toolbar toolbar;
     private Button buttonDownload;
     private TextView textDesc;
     private ImageView imagePrint;
+    private YouTubePlayerView playerView;
 
     private FirebaseFirestore db;
     private String selectedAppId, selectedAppName, selectedAppType;
     private App selectedApp;
+
+    public static final String GOOGLE_API_KEY = "AIzaSyBIkJyyaMXwVcAnr52DM5nAXCOOqh2eFKE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +59,8 @@ public class AppActivity extends AppCompatActivity {
         buttonDownload = findViewById(R.id.buttonDownload);
         textDesc = findViewById(R.id.textAppDesc);
         imagePrint = findViewById(R.id.imagePrint);
+
+        playerView = findViewById(R.id.youtubeView);
     }
 
     private void getExtras(){
@@ -62,7 +71,7 @@ public class AppActivity extends AppCompatActivity {
     }
 
     private void configureToolbar(){
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
         toolbar.setTitle(selectedAppName);
     }
 
@@ -95,6 +104,20 @@ public class AppActivity extends AppCompatActivity {
             sendIntent.putExtra(Intent.EXTRA_TEXT, formattedDescription);
             sendIntent.setType("text/plain");
             startActivity(sendIntent);*/
+        });
+
+        playerView.initialize(GOOGLE_API_KEY, new YouTubePlayer.OnInitializedListener() {
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasPlaying) {
+                if (!wasPlaying){
+                    youTubePlayer.cueVideo(app.getVideoID());
+                }
+            }
+
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+
+            }
         });
     }
 }
